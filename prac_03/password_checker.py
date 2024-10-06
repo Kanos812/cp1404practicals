@@ -23,3 +23,37 @@ def main():
         password = input("> ")
 
     print(f"Your {len(password)}-character password is valid: {password}")
+
+
+def is_valid_password(password):
+    """Determine if the provided password is valid."""
+
+    # Check password length
+    if not MIN_LENGTH <= len(password) <= MAX_LENGTH:
+        return False
+
+    # Initialize counters
+    number_of_lower = number_of_upper = number_of_digit = number_of_special = 0
+
+    # Loop through the password and count character types
+    for character in password:
+        if character.islower():
+            number_of_lower += 1
+        elif character.isupper():
+            number_of_upper += 1
+        elif character.isdigit():
+            number_of_digit += 1
+        elif character in SPECIAL_CHARACTERS:
+            number_of_special += 1
+
+    # Validate character requirements
+    if number_of_lower == 0 or number_of_upper == 0 or number_of_digit == 0:
+        return False
+    if IS_SPECIAL_CHARACTER_REQUIRED and number_of_special == 0:
+        return False
+
+    # If all checks pass, return True
+    return True
+
+if __name__ == "__main__":
+    main()
