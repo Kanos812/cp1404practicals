@@ -27,13 +27,10 @@ if __name__ == "__main__":
 print("Finished.")
 
 # Q1: When will a ValueError occur?
-# A1: A ValueError occurs when the user inputs something that cannot be converted to an integer,
-#     such as a string or a non-integer value.
+# A1: A ValueError occurs when the user provides an input that cannot be converted to an integer
 
 # Q2: When will a ZeroDivisionError occur?
-# A2: A ZeroDivisionError would occur if the denominator is zero during the division.
-#     In the current version of the code, this will not happen because the denominator is checked.
+# A2: A ZeroDivisionError occurs when denominator is equated to zero during the division
 
 # Q3: Could you change the code to avoid the possibility of a ZeroDivisionError?
-# A3: Yes, and the code has been updated to prevent the ZeroDivisionError by continuously prompting
-#     the user to input a valid (non-zero) denominator.
+# A3: Yes, and the code has been updated to prevent the ZeroDivisionError by continuously prompting the user to input a valid (non-zero) denominator.
