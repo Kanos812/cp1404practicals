@@ -9,6 +9,7 @@ def main():
         print("Access granted")
     else:
         print("Access denied")
+        return
 
     """Get 5 numbers from the user and display information about them."""
     numbers = []
