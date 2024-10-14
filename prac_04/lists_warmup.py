@@ -11,3 +11,6 @@ print(numbers[2:])
 
 # Print whether 9 is an element of numbers
 print(9 in numbers)
+
+# Check if numbers correctly outputs
+print("{ Unaltered elements:", numbers, "}")
