@@ -32,7 +32,7 @@ def main():
 
 
 if __name__ == "__main__":
-    email_dict = main()  # assign returned value to email_dict
+    email_dict = main()  # Assign returned value to email_dict
     print("\nEmail Dictionary:")
     for email, name in email_dict.items():
         print(f"{email}: {name}")
