@@ -1,4 +1,4 @@
-COLOR_CODES = {
+COLOUR_CODES = {
     "crimson": "#DC143C",
     "teal": "#008080",
     "coral": "#FF7F50",
