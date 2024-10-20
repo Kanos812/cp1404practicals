@@ -11,7 +11,7 @@ def main():
     email_dict = {}  # Initialize an empty dictionary to store emails and names
 
     while True:
-        email_address = input("Please input an email address (or type 'done' to finish): ")
+        email_address = input("Please input an email address: ")
         if email_address.lower() == '':
             break  # Exit the loop if the user types 'done'
 
@@ -20,11 +20,13 @@ def main():
 
         # User confirmation
         confirmation = input(f"Is the name '{name}' correct for the email '{email_address}'? (Y/N): ")
-        if confirmation.upper() == 'Y':
+        if confirmation.upper() == 'Y' or confirmation == '':
             email_dict[email_address] = name  # Store the email and name in the dictionary
             print("Email and name added to the dictionary.")
         else:
-            print("Email and name not added to the dictionary.")
+            corrected_name = input('Please input your name: ')
+            email_dict[email_address] = corrected_name
+            print("Email and name added to the dictionary.")
 
     return email_dict  # Return the dictionary
 
