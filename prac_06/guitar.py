@@ -2,9 +2,9 @@
 Guitars! - CP1404 Practical
 Harrison O'Kane
 
-Time Worked - 1831 - 1908 ; 2111 -
+Time Worked - 1831 - 1908 ; 2111 - 2115
 Estimated Completion - 0:35
-Actual Completion
+Actual Completion - 0:41 (+0:06)
 
 """
 
