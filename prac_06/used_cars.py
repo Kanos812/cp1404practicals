@@ -13,9 +13,12 @@ def main():
     print(f"Car has fuel: {my_car.fuel}")
     print(my_car)
 
-    #Add New Object (Limo)
-    limo = Car(fuel=100)
+    """ Limo Car Class """
+    limo = Car(fuel=100) #Add Limo
+    limo.add_fuel(20) # Add 20 units of fuel to Limo
     print(f"Limo has fuel: {limo.fuel}")
+    limo.drive(115) # Drive 115 units
+    print("Odometer =", limo._odometer) #Display odometer
     print(limo)
 
 main()
