@@ -6,8 +6,8 @@ def main():
     guitar2 = Guitar("Another Guitar", 2013, 1000)
 
     # Test get_age method
-    print("Gibson L-5 CES get_age() - Expected 100. Got", guitar1.get_age())
-    print("Another Guitar get_age() - Expected 9. Got", guitar2.get_age())
+    print("Gibson L-5 CES get_age() - Expected 102. Got", guitar1.get_age())
+    print("Another Guitar get_age() - Expected 11. Got", guitar2.get_age())
 
     # Test is_vintage method
     print("Gibson L-5 CES is_vintage() - Expected True. Got", guitar1.is_vintage())
