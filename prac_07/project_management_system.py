@@ -2,7 +2,7 @@
 Project Management System
 Started 23:30 (I should have not left this so late...)
 Expected Time to Completion - 30 Mins
-Finished 23:55 (My fingers hurt...)
+INCOMPLETE
 Harrison O'Kane
 """
 
@@ -26,8 +26,22 @@ class Project:
 
 
 def add_project(self, project):
-    """Add a new project to the system."""
-    self.projects.append(project)
+      """Add a new project."""
+    name = input("Name: ")
+    while True:
+        try:
+            start_date_str = input("Start date (dd/mm/yyyy): ")
+            start_date = datetime.datetime.strptime(start_date_str, "%d/%m/%Y").date()
+            break
+        except ValueError:
+            print("Invalid date format. Please use dd/mm/yyyy.")
+    priority = int(input("Priority: "))
+    cost_estimate = float(input("Cost estimate: "))
+    completion_percentage = int(input("Percent complete: "))
+    
+    project = Project(name, start_date, priority, cost_estimate, completion_percentage)
+    projects.append(project)
+    print(f"{project.name} added.")
 
 def delete_project(self, project_name):
     """Delete a project from the system."""
