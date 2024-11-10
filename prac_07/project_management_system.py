@@ -2,7 +2,7 @@
 Project Management System
 Started 23:30 (I should have not left this so late...)
 Expected Time to Completion - 30 Mins
-Finished 
+Finished
 Harrison O'Kane
 """
 
@@ -31,3 +31,28 @@ class Project:
                 del self.projects[i]
                 return True
         return False  # Project not found
+
+    def update_project(self, project_name, new_start_date=None, new_priority=None, new_completion=None):
+        """Update an existing project."""
+        for project in self.projects:
+            if project.name == project_name:
+                if new_start_date:
+                    project.start_date = new_start_date
+                if new_priority:
+                    project.priority = new_priority
+                if new_completion is not None:
+                    project.completion = new_completion
+                return True
+        return False  # Project not found
+
+    def display_projects(self, sort_by="priority"):
+        """Display projects, sorted by priority or completion."""
+        if sort_by == "priority":
+            projects_to_display = sorted(self.projects, key=lambda p: p.priority)
+        elif sort_by == "completion":
+            projects_to_display = sorted(self.projects, key=lambda p: p.completion)
+        else:
+            projects_to_display = self.projects
+
+        for project in projects_to_display:
+            print(project)
