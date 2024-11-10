@@ -1,7 +1,8 @@
 """
 Project Management System
-Started 11:30
+Started 23:30 (I should have not left this so late...)
 Expected Time to Completion - 30 Mins
+Finished 
 Harrison O'Kane
 """
 
@@ -18,3 +19,15 @@ class Project:
     def __str__(self):
         """Return a string representation of the project."""
         return f"{self.name}, start: {self.start_date}, priority {self.priority}, completion: {self.completion}"
+
+    def add_project(self, project):
+        """Add a new project to the system."""
+        self.projects.append(project)
+
+    def delete_project(self, project_name):
+        """Delete a project from the system."""
+        for i, project in enumerate(self.projects):
+            if project.name == project_name:
+                del self.projects[i]
+                return True
+        return False  # Project not found
