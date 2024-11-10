@@ -12,37 +12,59 @@ def get_guitars():
     print("Enter new guitar details (or leave blank to quit):")
     name = input("Name: ")
     while name != "":
-        year = int(input('Year :'))
-        cost = float(input('Cost :'))
+        while True:  # Loop until valid year input
+            try:
+                year = int(input('Year: '))
+                break  # Exit loop if input is valid
+            except ValueError:
+                print("Invalid input. Please enter a valid year (number).")
+
+        while True:  # Loop until valid cost input
+            try:
+                cost = float(input('Cost: '))
+                break  # Exit loop if input is valid
+            except ValueError:
+                print("Invalid input. Please enter a valid cost (number).")
+
         new_guitar = Guitar(name, year, cost)
         new_guitars.append(new_guitar)
         print(f"{new_guitar} added!")
+        name = input("Name: ")  # Get name for next guitar, allowing blank to quit
     return new_guitars
 
-def main():
+def load_guitars():
     """Read guitar data from file and store in list of Guitar objects."""
-
-    guitars = [] #Create an initially empty list
-
+    guitars = []
     try:
-        with open('guitars.csv', 'r') as file: #Open file to be read
+        with open('guitars.csv', 'r') as file:
             for line in file:
-                parts = line.strip().split(',') #Split line into parts
-                name = parts[0]
-                year = int(parts[1])
-                cost = float(parts[2])
-
-                guitar = Guitar(name, year, cost) #Create guitar object
-                guitars.append(guitar) #Add created object to list
-
+                parts = line.strip().split(',')
+                guitar = Guitar(parts[0], int(parts[1]), float(parts[2]))
+                guitars.append(guitar)
     except FileNotFoundError:
-        print('Error - File not Found') #Error handling in case of missing file
+        print('Error - File not Found')
+    return guitars
 
-    guitars.sort() #Sort guitar objects
 
+def display_guitars(guitars):
+    """Display the guitars in the list."""
     print('These are my guitars:')
     for guitar in guitars:
         print(guitar)
 
+def save_guitars(guitars):
+    """Save the guitars to the CSV file."""
+    with open('guitars.csv', 'w', newline='') as file:
+        writer = csv.writer(file)
+        for guitar in guitars:
+            writer.writerow([guitar.name, guitar.year, guitar.cost])
+
+def main():
+    """Main function to orchestrate the program."""
+    guitars = load_guitars()
+    new_guitars = get_guitars()
+    guitars.extend(new_guitars)
+    guitars.sort()
+    display_guitars(guitars)
 if __name__ == '__main__':
     main()
