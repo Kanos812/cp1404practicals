@@ -25,5 +25,11 @@ def main():
     except FileNotFoundError:
         print('Error - File not Found') #Error handling in case of missing file
 
+    guitars.sort() #Sort guitar objects
+
+    print('These are my guitars:')
+    for guitar in guitars:
+        print(guitar)
+
 if __name__ == '__main__':
     main()
