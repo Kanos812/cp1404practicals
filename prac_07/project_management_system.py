@@ -29,7 +29,6 @@ def add_project(self, project):
     """Add a new project to the system."""
     self.projects.append(project)
 
-
 def delete_project(self, project_name):
     """Delete a project from the system."""
     for i, project in enumerate(self.projects):
@@ -81,3 +80,15 @@ def load_projects(filename="projects.txt"):
             project = Project(name, start_date, priority, cost_estimate, completion_percentage)
             projects.append(project)
     return projects
+
+def save_projects(projects, filename="projects.txt"):
+    """Save projects to a file."""
+    with open(filename, 'w', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow(["Name", "Start Date", "Priority", "Cost Estimate", "Completion Percentage"])  # Header
+        for project in projects:
+            writer.writerow([project.name, project.start_date.strftime("%d/%m/%Y"), project.priority, project.cost_estimate, project.completion_percentage])
+
+def filter_projects_by_date(projects, date):
+    """Filter projects by start date."""
+    return [project for project in projects if project.start_date > date]
