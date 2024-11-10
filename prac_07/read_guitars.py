@@ -4,7 +4,9 @@ File Reader for guitars.csv - opens/reads a file, stores in objects of custom cl
 Harrison O'Kane
 """
 
+import csv
 from guitar import Guitar
+
 
 def get_guitars():
     """Allow user to input new guitar data to be saved and stored to the csv file"""
@@ -32,6 +34,7 @@ def get_guitars():
         name = input("Name: ")  # Get name for next guitar, allowing blank to quit
     return new_guitars
 
+
 def load_guitars():
     """Read guitar data from file and store in list of Guitar objects."""
     guitars = []
@@ -52,12 +55,14 @@ def display_guitars(guitars):
     for guitar in guitars:
         print(guitar)
 
+
 def save_guitars(guitars):
     """Save the guitars to the CSV file."""
     with open('guitars.csv', 'w', newline='') as file:
         writer = csv.writer(file)
         for guitar in guitars:
             writer.writerow([guitar.name, guitar.year, guitar.cost])
+
 
 def main():
     """Main function to orchestrate the program."""
@@ -66,5 +71,8 @@ def main():
     guitars.extend(new_guitars)
     guitars.sort()
     display_guitars(guitars)
+    save_guitars(guitars)
+
+
 if __name__ == '__main__':
     main()
