@@ -6,6 +6,19 @@ Harrison O'Kane
 
 from guitar import Guitar
 
+def get_guitars():
+    """Allow user to input new guitar data to be saved and stored to the csv file"""
+    new_guitars = []
+    print("Enter new guitar details (or leave blank to quit):")
+    name = input("Name: ")
+    while name != "":
+        year = int(input('Year :'))
+        cost = float(input('Cost :'))
+        new_guitar = Guitar(name, year, cost)
+        new_guitars.append(new_guitar)
+        print(f"{new_guitar} added!")
+    return new_guitars
+
 def main():
     """Read guitar data from file and store in list of Guitar objects."""
 
