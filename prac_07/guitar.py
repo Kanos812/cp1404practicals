@@ -1,11 +1,6 @@
 """
-Guitars! - CP1404 Practical
+Even More Guitars! - Week 07 Practical
 Harrison O'Kane
-
-Time Worked - 1831 - 1908 ; 2111 - 2115
-Estimated Completion - 0:35
-Actual Completion - 0:41 (+0:06)
-
 """
 
 class Guitar:

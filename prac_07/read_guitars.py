@@ -17,7 +17,7 @@ def main():
                 parts = line.strip().split(',') #Split line into parts
                 name = parts[0]
                 year = int(parts[1])
-                cost = int(parts[2])
+                cost = float(parts[2])
 
                 guitar = Guitar(name, year, cost) #Create guitar object
                 guitars.append(guitar) #Add created object to list
