@@ -58,7 +58,7 @@ def display_guitars(guitars):
 
 def save_guitars(guitars):
     """Save the guitars to the CSV file."""
-    with open('guitars.csv', 'w', newline='') as file:
+    with open('guitars.csv', 'a', newline='') as file:
         writer = csv.writer(file)
         for guitar in guitars:
             writer.writerow([guitar.name, guitar.year, guitar.cost])
