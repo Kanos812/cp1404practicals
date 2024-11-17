@@ -24,10 +24,11 @@ class SquareNumberApp(App):
     def handle_calculate(self, value):
         """ handle calculation (could be button press or other call), output result to label widget """
         try:
-            result = float(value) ** 2
+            number = float(value) #Attempt conversion to float
+            result = number ** 2
             self.root.ids.output_label.text = str(result)
         except ValueError:
-            pass
+            self.root.ids.output_label.text = "Invalid Input"
 
 
 SquareNumberApp().run()
