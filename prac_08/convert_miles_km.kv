@@ -1,0 +1,15 @@
+BoxLayout:
+    orientation: 'vertical'
+
+    TextInput:
+        id: input_miles
+        hint_text: "Please enter a distance in Miles"
+        multiline: False
+
+    Button:
+        text: 'Convert'
+        on_press: app.handle_convert()
+
+    Label:
+        id: output_label
+        text: ''
