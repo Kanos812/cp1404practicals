@@ -13,7 +13,7 @@ import csv
 class Project:
     """Represents a project with name, start date, priority, and completion."""
 
-    def __init__(self, name, start_date, priority, completion=False):
+    def __init__(self, name, start_date, priority, completion=False, completion_percentage=None):
         """Initialize a Project object."""
         self.name = name
         self.start_date = start_date
@@ -29,31 +29,40 @@ class Project:
         """Less than comparison for sorting."""
         return self.priority < other.priority
 
-def add_project(self, project):
-      """Add a new project."""
-    name = input("Name: ")
-    while True:
-        try:
-            start_date_str = input("Start date (dd/mm/yyyy): ")
-            start_date = datetime.datetime.strptime(start_date_str, "%d/%m/%Y").date()
-            break
-        except ValueError:
-            print("Invalid date format. Please use dd/mm/yyyy.")
-    priority = int(input("Priority: "))
-    cost_estimate = float(input("Cost estimate: "))
-    completion_percentage = int(input("Percent complete: "))
+    def add_project(self, project):
+          """Add a new project."""
+        name = input("Name: ")
+        while True:
+            try:
+                start_date_str = input("Start date (dd/mm/yyyy): ")
+                start_date = datetime.datetime.strptime(start_date_str, "%d/%m/%Y").date()
+                break
+            except ValueError:
+                print("Invalid date format. Please use dd/mm/yyyy.")
+        priority = int(input("Priority: "))
+        cost_estimate = float(input("Cost estimate: "))
+        completion_percentage = int(input("Percent complete: "))
 
-    project = Project(name, start_date, priority, cost_estimate, completion_percentage)
-    projects.append(project)
-    print(f"{project.name} added.")
+        project = Project(name, start_date, priority, cost_estimate, completion_percentage)
+        projects.append(project)
+        print(f"{project.name} added.")
 
-def delete_project(self, project_name):
-    """Delete a project from the system."""
-    for i, project in enumerate(self.projects):
-        if project.name == project_name:
-            del self.projects[i]
-            return True
-    return False  # Project not found
+
+    def delete_project(projects):
+        """Delete a project by its name."""
+        # Display numbered list of projects for user to choose from
+        for i, project in enumerate(projects):
+            print(f"{i} {project}")
+
+        while True:  # Loop until valid project index is entered
+                try:
+                    project_index = int(input("Enter the number of the project to delete: "))
+                    if 0 <= project_index < len(projects):
+                        break
+                    else:
+                        print("Invalid project number.")
+                except ValueError:
+                    print("Invalid input. Please enter a number.")
 
 
 def update_project(self, project_name, new_start_date=None, new_priority=None, new_completion=None):
