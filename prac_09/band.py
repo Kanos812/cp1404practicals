@@ -1,20 +1,28 @@
-# Class Band:
-#     Attributes:
-#         name (string): The name of the band.
-#         musicians (list): A list of Musician objects in the band.
+"""
+CP1404 Practical 09
+Band Class
+Harrison O'Kane
+21/11/2024
+"""
+from prac_09 import musician
 
-#     Methods:
-#         __init__(name):
-#             - Initialize the band with the given name.
-#             - Create an empty list to store musicians.
 
-#         __str__():
-#             - Return a string representation of the band, including its name and a list of musicians.
+class Band:
+    """Band class to manage collection of musicians."""
 
-#         add(musician):
-#             - Add the given musician to the band's list of musicians.
+    def __init__(self, name=""):
+        """Initialize band collection."""
+        self.name = name
+        self.musicians = []
 
-#         play():
-#             - Get the playing status of each musician in the band.
-#             - Combine the statuses into a multi-line string, separated by newlines.
-#             - Return the combined string.
+    def _str_(self):
+        """Return string representation of band collection."""
+        return f"{self.name}"
+
+    def add(self, musician):
+        """Add a musician."""
+        self.musicians.append(musician)
+
+    def play(self):
+        "Return a string of each musician and their instrument."
+        return"Test"
