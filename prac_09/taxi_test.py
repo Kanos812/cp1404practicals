@@ -1,6 +1,10 @@
+"""
+taxi_test.py
+"""
+
 from prac_09.taxi import Taxi
 
-my_taxi = Taxi(name="Prius 1", fuel=100, price_per_km=1.23) #Define taxi attributes
+my_taxi = Taxi(name="Prius 1", fuel=100) #Define taxi attributes
 my_taxi.drive(40) #Drive 40km
 
 print(my_taxi) #Print taxi attributes
