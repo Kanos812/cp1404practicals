@@ -5,9 +5,9 @@ Harrison O'Kane
 21/11/2024
 """
 
-from prac_09.car import Car
+from prac_09.taxi import Taxi
 
-class SilverServiceTaxi(Car):
+class SilverServiceTaxi(Taxi):
     """Initialise SilverServiceTaxi instance."""
     def __init__(self, name, fuel, fanciness):
         super().__init__(name, fuel)
@@ -16,4 +16,4 @@ class SilverServiceTaxi(Car):
 
 def get_fare(self):
     """Return fare for trip."""
-    return self.flagfall + super().get_fare()
+    return super().get_fare()
