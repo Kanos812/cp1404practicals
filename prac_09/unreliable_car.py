@@ -15,3 +15,12 @@ class UnreliableCar(Car):
         """Initialise UnreliableCar instance."""
         super().__init__(name,fuel)
         self.reliability = reliability
+
+    def drive(self, distance):
+        """Allow the car to drive if reliability permits it to do so."""
+
+        if random.randint(0,100) < self.reliability: #'Check' reliability
+            distance_driven = super().drive(distance) #Drive car if reliability holds up
+            return distance_driven
+        else:
+            return 0 #Car did not drive
