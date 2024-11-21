@@ -27,6 +27,17 @@ menu = {
     "d": {"description": "Drive", "function": drive_taxi},
 }
 
+def choose_taxi(taxis):
+    """Choose taxi from list."""
+    print("Taxi's available: ")
+    display_taxis(taxis)
+    taxi_choice = int(input("Please choose a taxi: "))
+    try:
+        return taxis[taxi_choice]
+    except IndexError:
+        print("Invalid taxi choice")
+        return None
+
 while True:
     print("Please select an Option: "
           "\n (Q)uit"
