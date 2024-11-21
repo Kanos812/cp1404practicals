@@ -148,13 +148,17 @@ class Project:
             print(f"Error: File '{filename}' not found.")
         return projects
 
-def save_projects(projects, filename="projects.txt"):
-    """Save projects to a file."""
-    with open(filename, 'w', newline='') as file:
-        writer = csv.writer(file)
-        writer.writerow(["Name", "Start Date", "Priority", "Cost Estimate", "Completion Percentage"])  # Header
-        for project in projects:
-            writer.writerow([project.name, project.start_date.strftime("%d/%m/%Y"), project.priority, project.cost_estimate, project.completion_percentage])
+    def save_projects(projects, filename="projects.txt"):
+        """Save projects to a file."""
+        try:
+            with open(filename, 'w', newline='') as file:
+                writer = csv.writer(file, delimiter='\t')  # Use tab delimiter
+                writer.writerow(["Name", "Start Date", "Priority", "Cost Estimate", "Completion Percentage"])  # Header
+                for project in projects:
+                    writer.writerow([project.name, project.start_date.strftime("%d/%m/%Y"),
+                                     project.priority, project.cost_estimate, project.completion_percentage])
+        except IOError as e:
+            print(f"Error saving projects to '{filename}': {e}")
 
 def filter_projects_by_date(projects, date):
     """Filter projects by start date."""
