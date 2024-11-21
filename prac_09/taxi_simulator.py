@@ -5,13 +5,13 @@ Harrison O'Kane
 22/11/2024
 """
 
-from prac_09 import taxi
-from prac_09 import silver_service_taxi
+from prac_09.taxi import Taxi
+from prac_09.silver_service_taxi import SilverServiceTaxi
 
-# Initialization
-# Create a list of taxis (Taxi and SilverServiceTaxi objects)
-# Set current_taxi to None
-# Set total_bill to 0
+"""Initialisation."""
+taxis = [Taxi("Prius", 100), SilverServiceTaxi("Limo", 100, 2), SilverServiceTaxi("Hummer", 200, 4)]
+current_taxi = None
+total_bill = 0
 
 # Main Loop
 # Print welcome message and menu options
