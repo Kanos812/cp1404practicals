@@ -6,3 +6,9 @@ Harrison O'Kane
 """
 
 from prac_09.unreliable_car import UnreliableCar
+
+my_unreliable_car = UnreliableCar(name="Tesla Model F", fuel=100, reliability=100) #Define taxi attributes
+my_unreliable_car.drive(40) #Drive 40km
+
+print(my_unreliable_car) #Print taxi attributes
+
