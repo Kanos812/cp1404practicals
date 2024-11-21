@@ -8,6 +8,10 @@ Actual Completion - 0:41 (+0:06)
 
 """
 
+import datetime
+
+current_year = datetime.date.today().year
+
 class Guitar:
     """Store details of guitar."""
 
@@ -23,8 +27,7 @@ class Guitar:
 
     def get_age(self):
         """Get the age of the guitar in years."""
-        # Calculate age based on current year (replace with actual current year)
-        current_year = 2024
+        # Calculate age based on current year
         return current_year - self.year
 
     def is_vintage(self):
