@@ -20,13 +20,6 @@ def display_taxis(taxis):
     for i, taxi in enumerate(taxis):  #Iterate over taxis list
         print(f"{i} - {taxi}")
 
-"""Menu Directory."""
-menu = {
-    "q": {"description": "Quit", "function": None},  # Quit has no function
-    "c": {"description": "Choose taxi", "function": choose_taxi},
-    "d": {"description": "Drive", "function": drive_taxi},
-}
-
 def choose_taxi(taxis):
     """Choose taxi from list."""
     print("Taxi's available: ")
@@ -37,6 +30,26 @@ def choose_taxi(taxis):
     except IndexError:
         print("Invalid taxi choice")
         return None
+
+def drive_taxi(current_taxi):
+    """Drive the current taxi and update the total bill."""
+    if current_taxi:
+        distance = float(input("Drive how far? "))
+        current_taxi.start_fare()
+        current_taxi.drive(distance)
+        trip_cost = current_taxi.get_fare()
+        print(f"Your {current_taxi.name} trip cost you ${trip_cost:.2f}")
+        return trip_cost
+    else:
+        print("You need to choose a taxi before you can drive")
+        return None
+
+"""Menu Directory."""
+menu = {
+    "q": {"description": "Quit", "function": None},  # Quit has no function
+    "c": {"description": "Choose taxi", "function": choose_taxi},
+    "d": {"description": "Drive", "function": drive_taxi},
+}
 
 while True:
     print("Please select an Option: "
