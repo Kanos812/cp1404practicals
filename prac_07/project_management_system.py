@@ -9,45 +9,43 @@ Harrison O'Kane
 import datetime
 import csv
 
-
 class Project:
     """Represents a project with name, start date, priority, and completion."""
 
-    def __init__(self, name, start_date, priority, completion=False, completion_percentage=None):
+    def __init__(self, name, start_date, priority, cost_estimate, completion_percentage=0):
         """Initialize a Project object."""
         self.name = name
         self.start_date = start_date
         self.priority = priority
-        self.completion = completion
-        self.completion_message = completion_percentage
+        self.cost_estimate = cost_estimate
+        self.completion_percentage = completion_percentage
 
     def __str__(self):
         """Return a string representation of the project."""
-        return f"{self.name}, start: {self.start_date}, priority {self.priority}, completion: {self.completion}"
+        return f"{self.name}, start: {self.start_date.strftime('%d/%m/%Y')}, priority: {self.priority}, cost estimate: {self.cost_estimate}, completion: {self.completion_percentage}%"
 
     def __lt__(self, other):
         """Less than comparison for sorting."""
         return self.priority < other.priority
 
-    def add_project(self, project):
-
-        """Add a new project."""
+# --- Function to add a new project ---
+def add_project(projects):
+    """Add a new project to the list."""
     name = input("Name: ")
     while True:
         try:
             start_date_str = input("Start date (dd/mm/yyyy): ")
             start_date = datetime.datetime.strptime(start_date_str, "%d/%m/%Y").date()
             break
-    except ValueError:
-    print("Invalid date format. Please use dd/mm/yyyy.")
+        except ValueError:
+            print("Invalid date format. Please use dd/mm/yyyy.")
+    priority = int(input("Priority: "))
+    cost_estimate = float(input("Cost estimate: "))
+    completion_percentage = int(input("Percent complete: "))
 
-priority = int(input("Priority: "))
-cost_estimate = float(input("Cost estimate: "))
-completion_percentage = int(input("Percent complete: "))
-
-project = Project(name, start_date, priority, cost_estimate, completion_percentage)
-projects.append(project)
-print(f"{project.name} added.")
+    project = Project(name, start_date, priority, cost_estimate, completion_percentage)
+    projects.append(project)
+    print(f"{project.name} added.")
 
 
 def delete_project(projects):
@@ -60,6 +58,8 @@ def delete_project(projects):
         try:
             project_index = int(input("Enter the number of the project to delete: "))
             if 0 <= project_index < len(projects):
+                del projects[project_index]  # Delete the project
+                print("Project deleted successfully.")
                 break
             else:
                 print("Invalid project number.")
@@ -86,33 +86,32 @@ def update_project(projects):
     project = projects[project_index]
     print(project)  # Display the selected project
 
+    # Get new completion percentage from the user
+    while True:
+        try:
+            new_completion_percentage = input("New Percentage: ")
+            if new_completion_percentage == "":
+                break  # Leave blank to keep existing value
+            new_completion_percentage = int(new_completion_percentage)
+            if 0 <= new_completion_percentage <= 100:
+                project.completion_percentage = new_completion_percentage
+                break
+            else:
+                print("Invalid percentage. Please enter a value between 0 and 100.")
+        except ValueError:
+            print("Invalid input. Please enter a number.")
 
-# Get new completion percentage from the user
-while True:
-    try:
-        new_completion_percentage = input("New Percentage: ")
-        if new_completion_percentage == "":
-            break  # Leave blank to keep existing value
-        new_completion_percentage = int(new_completion_percentage)
-        if 0 <= new_completion_percentage <= 100:
-            project.completion_percentage = new_completion_percentage
+    # Get new priority from the user
+    while True:
+        try:
+            new_priority = input("New Priority: ")
+            if new_priority == "":
+                break  # Leave blank to keep existing value
+            new_priority = int(new_priority)
+            project.priority = new_priority
             break
-        else:
-            print("Invalid percentage. Please enter a value between 0 and 100.")
-    except ValueError:
-        print("Invalid input. Please enter a number.")
-
-# Get new priority from the user
-while True:
-    try:
-        new_priority = input("New Priority: ")
-        if new_priority == "":
-            break  # Leave blank to keep existing value
-        new_priority = int(new_priority)
-        project.priority = new_priority
-        break
-    except ValueError:
-        print("Invalid input. Please enter a number.")
+        except ValueError:
+            print("Invalid input. Please enter a number.")
 
 print("Project updated successfully.")
 
