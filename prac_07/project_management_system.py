@@ -129,21 +129,24 @@ class Project:
         for project in completed_projects:
             print(f"  {project}")
 
-def load_projects(filename="projects.txt"):
-    """Load projects from a file."""
-    projects = []
-    with open(filename, 'r') as file:
-        reader = csv.reader(file)
-        next(reader)  # Skip the header line
-        for row in reader:
-            name, start_date_str, priority, cost_estimate, completion_percentage = row
-            start_date = datetime.datetime.strptime(start_date_str, "%d/%m/%Y").date()
-            priority = int(priority)
-            cost_estimate = float(cost_estimate)
-            completion_percentage = int(completion_percentage)
-            project = Project(name, start_date, priority, cost_estimate, completion_percentage)
-            projects.append(project)
-    return projects
+    def load_projects(filename="projects.txt"):
+        """Load projects from a file."""
+        projects = []
+        try:
+            with open(filename, 'r') as file:
+                reader = csv.reader(file, delimiter='\t')  # Use tab delimiter
+                next(reader)  # Skip the header line
+                for row in reader:
+                    name, start_date_str, priority, cost_estimate, completion_percentage = row
+                    start_date = datetime.datetime.strptime(start_date_str, "%d/%m/%Y").date()
+                    priority = int(priority)
+                    cost_estimate = float(cost_estimate)
+                    completion_percentage = int(completion_percentage)
+                    project = Project(name, start_date, priority, cost_estimate, completion_percentage)
+                    projects.append(project)
+        except FileNotFoundError:
+            print(f"Error: File '{filename}' not found.")
+        return projects
 
 def save_projects(projects, filename="projects.txt"):
     """Save projects to a file."""
