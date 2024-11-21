@@ -65,18 +65,25 @@ class Project:
                     print("Invalid input. Please enter a number.")
 
 
-def update_project(self, project_name, new_start_date=None, new_priority=None, new_completion=None):
-    """Update an existing project."""
-    for project in self.projects:
-        if project.name == project_name:
-            if new_start_date:
-                project.start_date = new_start_date
-            if new_priority:
-                project.priority = new_priority
-            if new_completion is not None:
-                project.completion = new_completion
-            return True
-    return False  # Project not found
+    def update_project(projects):
+        """Update an existing project."""
+        # Display numbered list of projects for user to choose from
+        for i, project in enumerate(projects):
+            print(f"{i} {project}")
+
+        while True:  # Loop until valid project index is entered
+            try:
+                project_index = int(input("Enter the number of the project to update: "))
+                if 0 <= project_index < len(projects):
+                    break
+                else:
+                    print("Invalid project number.")
+            except ValueError:
+                print("Invalid input. Please enter a number.")
+
+        project = projects[project_index]
+        print(project)  # Display the selected project
+
 
 
 def display_projects(self, sort_by="priority"):
