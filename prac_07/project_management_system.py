@@ -84,7 +84,34 @@ class Project:
         project = projects[project_index]
         print(project)  # Display the selected project
 
+# Get new completion percentage from the user
+    while True:
+        try:
+            new_completion_percentage = input("New Percentage: ")
+            if new_completion_percentage == "":
+                break  # Leave blank to keep existing value
+            new_completion_percentage = int(new_completion_percentage)
+            if 0 <= new_completion_percentage <= 100:
+                project.completion_percentage = new_completion_percentage
+                break
+            else:
+                print("Invalid percentage. Please enter a value between 0 and 100.")
+        except ValueError:
+            print("Invalid input. Please enter a number.")
 
+    # Get new priority from the user
+    while True:
+        try:
+            new_priority = input("New Priority: ")
+            if new_priority == "":
+                break  # Leave blank to keep existing value
+            new_priority = int(new_priority)
+            project.priority = new_priority
+            break
+        except ValueError:
+            print("Invalid input. Please enter a number.")
+
+    print("Project updated successfully.")
 
 def display_projects(self, sort_by="priority"):
     """Display projects, sorted by priority or completion."""
