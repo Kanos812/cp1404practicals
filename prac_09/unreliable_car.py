@@ -23,4 +23,5 @@ class UnreliableCar(Car):
             distance_driven = super().drive(distance) #Drive car if reliability holds up
             return distance_driven
         else:
+            print("Car has broken Down")
             return 0 #Car did not drive
