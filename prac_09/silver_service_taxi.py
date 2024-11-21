@@ -14,3 +14,6 @@ class SilverServiceTaxi(Car):
         self.fanciness = fanciness
         self.price_per_km = 1.23 * fanciness
 
+def get_fare(self):
+    """Return fare for trip."""
+    return self.flagfall + super().get_fare()
