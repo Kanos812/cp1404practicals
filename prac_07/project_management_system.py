@@ -113,18 +113,21 @@ class Project:
 
     print("Project updated successfully.")
 
-def display_projects(self, sort_by="priority"):
-    """Display projects, sorted by priority or completion."""
-    if sort_by == "priority":
-        projects_to_display = sorted(self.projects, key=lambda p: p.priority)
-    elif sort_by == "completion":
-        projects_to_display = sorted(self.projects, key=lambda p: p.completion)
-    else:
-        projects_to_display = self.projects
+    def display_projects(projects):
+        """Display projects, grouped by completion status and sorted by priority."""
+        incomplete_projects = [project for project in projects if project.completion_percentage < 100]
+        completed_projects = [project for project in projects if project.completion_percentage == 100]
 
-    for project in projects_to_display:
-        print(project)
+        incomplete_projects.sort()  # Sort by priority (due to __lt__ in Project class)
+        completed_projects.sort()
 
+        print("Incomplete projects:")
+        for project in incomplete_projects:
+            print(f"  {project}")
+
+        print("Completed projects:")
+        for project in completed_projects:
+            print(f"  {project}")
 
 def load_projects(filename="projects.txt"):
     """Load projects from a file."""
