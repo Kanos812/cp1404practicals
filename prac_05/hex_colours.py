@@ -11,7 +11,7 @@ COLOUR_CODES = {
     "sienna": "#A0522D"
 }
 
-colour_name = input("Enter a color name (or leave blank to stop): ").lower()
+colour_name = input("Enter a color name (or leave blank to stop): ").lower().replace(" ", "")
 
 while colour_name != "":
     try:
@@ -19,4 +19,4 @@ while colour_name != "":
         print(f"The hex code for {colour_name} is {hex_code}")
     except KeyError:
         print("Invalid color name.")
-    colour_name = input("Enter a color name (or leave blank to stop): ").lower()
+    colour_name = input("Enter a color name (or leave blank to stop): ").lower().lower().replace(" ", "")
