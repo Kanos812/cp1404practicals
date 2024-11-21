@@ -1,8 +1,8 @@
 """
 Project Management System
-Started 23:30 (I should have not left this so late...)
-Expected Time to Completion - 30 Mins
-INCOMPLETE
+Expected Time to Complete - 01:15
+Actual Time To Complete - 0:30
+Submitted Late - 22/11/24
 Harrison O'Kane
 """
 
@@ -19,11 +19,15 @@ class Project:
         self.start_date = start_date
         self.priority = priority
         self.completion = completion
+        self.completion_message = completion_percentage
 
     def __str__(self):
         """Return a string representation of the project."""
         return f"{self.name}, start: {self.start_date}, priority {self.priority}, completion: {self.completion}"
 
+    def __lt__(self, other):
+        """Less than comparison for sorting."""
+        return self.priority < other.priority
 
 def add_project(self, project):
       """Add a new project."""
@@ -38,7 +42,7 @@ def add_project(self, project):
     priority = int(input("Priority: "))
     cost_estimate = float(input("Cost estimate: "))
     completion_percentage = int(input("Percent complete: "))
-    
+
     project = Project(name, start_date, priority, cost_estimate, completion_percentage)
     projects.append(project)
     print(f"{project.name} added.")
