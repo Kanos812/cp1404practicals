@@ -56,6 +56,7 @@ while True:
           "\n (Q)uit"
           "\n (C)hoose a taxi "
           "\n (D)rive taxi")
+    print(f"Bill to date: ${total_bill:.2f}") #Print updated total bill
     menu_choice = input(">>> ").lower()
     if menu_choice in menu:
         if menu_choice == "q":
