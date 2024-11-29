@@ -3,7 +3,7 @@ CP1404 Practical
 Harrison O'Kane
 Testing code using assert and doctest
 Estimated Time to Complete - 0:30
-Actual Time to Complete -
+Actual Time to Complete - 0:15 (-0:15)
 """
 
 import doctest
