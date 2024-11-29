@@ -8,18 +8,19 @@ Actual Time to Complete -
 
 import wikipedia
 
-"""
-FUNCTION fetch_wiki_page(title):
-    TRY:
-        page = GET Wikipedia page with title (autosuggest=False)
-        RETURN page
-    EXCEPT DisambiguationError AS e:
-        PRINT "Disambiguation error: " + e.options
-    EXCEPT PageError:
-        PRINT "Page not found for title: " + title
-    EXCEPT Exception AS e:
-        PRINT "An error occurred: " + e
+def fetch_wiki_page(title):
+    """Attempts to fetch Wiki page with given title."""
+    try:
+        page = wikipedia.page(title, autosuggest=False)
+        return page
+    except wikipedia.DisambiguationError as e:
+        print(f"Disambiguation error: {e.options}")
+    except wikipedia.PageError:
+        print(f"Page not found for title: {title}")
+    except Exception as e:
+        print(f"An error occurred: {e}")
 
+"""
 FUNCTION main():
     WHILE True:
         title = INPUT "Enter a Wikipedia page title or search phrase (or leave blank to exit): "
