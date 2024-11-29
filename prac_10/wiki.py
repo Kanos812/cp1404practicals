@@ -3,7 +3,7 @@ CP1404 Practical
 Harrison O'Kane
 Prompts user for page title and prints page details
 Estimated Time to Complete - 0:30
-Actual Time to Complete -
+Actual Time to Complete - 0:40 (+0:10)
 """
 
 import wikipediaapi
@@ -22,6 +22,14 @@ def is_disambiguation(page):
     """Check if a page is a disambiguation page."""
     return "may refer to:" in page.summary[:100]
 
+def format_text(text, word_limit=20):
+    """Format text to have a new line after every 'word_limit' words."""
+    words = text.split()
+    formatted_text = ''
+    for i in range(0, len(words), word_limit):
+        formatted_text += ' '.join(words[i:i + word_limit]) + '\n'
+    return formatted_text.strip()
+
 def main():
     """Prompt user for page title or search phrase to print details."""
     while True:
@@ -37,7 +45,7 @@ def main():
                     print(link)
             else:
                 print(f"\nTitle: {page.title}\n")
-                print(f"Summary: {page.summary[:500]}...\n")  # Print first 500 characters of summary
+                print(f"Summary: {format_text(page.summary[:500])}\n")  # Print first 500 characters of formatted summary
                 print(f"URL: {page.fullurl}\n")
 
 if __name__ == '__main__':
