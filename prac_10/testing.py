@@ -47,3 +47,18 @@ run_tests()
 
 # Uncomment the following line and run the doctests
 doctest.testmod()
+
+def format_phrase(phrase):
+    """
+    Format a phrase as a sentence, starting with a capital and ending with a single full stop.
+    >>> format_phrase('hello')
+    'Hello.'
+    >>> format_phrase('It is an ex parrot.')
+    'It is an ex parrot.'
+    >>> format_phrase('the quick brown fox jumps over the lazy dog')
+    'The quick brown fox jumps over the lazy dog.'
+    """
+    return phrase.capitalize().rstrip('.') + '.'
+
+# Run the doctests
+doctest.testmod()
