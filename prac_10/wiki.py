@@ -10,13 +10,20 @@ import wikipediaapi
 
 def fetch_wiki_page(title):
     """Attempts to fetch Wiki page with given title."""
-    wiki_wiki = wikipediaapi.Wikipedia(language='en', user_agent='YourAppName/1.0 (Your Contact Info)')
-    page = wiki_wiki.page(title)
-    if page.exists():
-        return page
-    else:
+    try:
+        wiki_wiki = wikipediaapi.Wikipedia(language='en', user_agent='YourAppName/1.0 (Your Contact Info)')
+        page = wiki_wiki.page(title)
+        if page.exists():
+            return page
+        else:
+            print(f"Page not found for title: {title}")
+            return None
+    except wikipediaapi.DisambiguationError as e:
+        print(f"Disambiguation error: {e.options}")
+    except wikipediaapi.PageError:
         print(f"Page not found for title: {title}")
-        return None
+    except Exception as e:
+        print(f"An error occurred: {e}")
 
 def main():
     """Prompt user for page title or search phrase to print details."""
