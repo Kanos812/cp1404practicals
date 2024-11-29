@@ -10,7 +10,7 @@ import wikipediaapi
 
 def fetch_wiki_page(title):
     """Attempts to fetch Wiki page with given title."""
-    wiki_wiki = wikipediaapi.Wikipedia('en')
+    wiki_wiki = wikipediaapi.Wikipedia(language='en', user_agent='YourAppName/1.0 (Your Contact Info)')
     page = wiki_wiki.page(title)
     if page.exists():
         return page
