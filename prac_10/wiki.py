@@ -11,23 +11,16 @@ import wikipediaapi
 def fetch_wiki_page(title):
     """Attempts to fetch Wiki page with given title."""
     wiki_wiki = wikipediaapi.Wikipedia(language='en', user_agent='YourAppName/1.0 (Your Contact Info)')
-    try:
-        page = wiki_wiki.page(title)
-        if page.exists():
-            return page
-        else:
-            print(f'Page id "{title}" does not match any pages. Try another id!')
-            return None
-    except wikipedia.DisambiguationError as e:
-        print("We need a more specific title. Try one of the following, or a new search:")
-        print(e.options)
-        return None
-    except wikipedia.PageError:
+    page = wiki_wiki.page(title)
+    if page.exists():
+        return page
+    else:
         print(f'Page id "{title}" does not match any pages. Try another id!')
         return None
-    except Exception as e:
-        print(f"An error occurred: {e}")
-        return None
+
+def is_disambiguation(page):
+    """Check if a page is a disambiguation page."""
+    return "may refer to:" in page.summary[:100]
 
 def main():
     """Prompt user for page title or search phrase to print details."""
@@ -38,9 +31,14 @@ def main():
             break
         page = fetch_wiki_page(title)
         if page:
-            print(f"\nTitle: {page.title}\n")
-            print(f"Summary: {page.summary[:500]}...\n")  # Print first 500 characters of summary
-            print(f"URL: {page.fullurl}\n")
+            if is_disambiguation(page):
+                print("We need a more specific title. Try one of the following, or a new search:")
+                for link in page.links.keys():
+                    print(link)
+            else:
+                print(f"\nTitle: {page.title}\n")
+                print(f"Summary: {page.summary[:500]}...\n")  # Print first 500 characters of summary
+                print(f"URL: {page.fullurl}\n")
 
 if __name__ == '__main__':
     main()
