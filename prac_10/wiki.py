@@ -6,32 +6,30 @@ Estimated Time to Complete - 0:30
 Actual Time to Complete -
 """
 
-import wikipedia
+import wikipediaapi
 
 def fetch_wiki_page(title):
     """Attempts to fetch Wiki page with given title."""
-    try:
-        page = wikipedia.page(title, autosuggest=False)
+    wiki_wiki = wikipediaapi.Wikipedia('en')
+    page = wiki_wiki.page(title)
+    if page.exists():
         return page
-    except wikipedia.DisambiguationError as e:
-        print(f"Disambiguation error: {e.options}")
-    except wikipedia.PageError:
+    else:
         print(f"Page not found for title: {title}")
-    except Exception as e:
-        print(f"An error occurred: {e}")
+        return None
 
-"""
-FUNCTION main():
-    WHILE True:
-        title = INPUT "Enter a Wikipedia page title or search phrase (or leave blank to exit): "
-        IF title IS empty:
-            BREAK
-        page = CALL fetch_wiki_page(title)
-        IF page IS NOT None:
-            PRINT "Title: " + page.title
-            PRINT "Summary: " + page.summary
-            PRINT "Content: " + first 500 characters of page.content
-            PRINT separator line
+def main():
+    """Prompt user for page title or search phrase to print details."""
+    while True:
+        title = input("Enter a Wikipedia page title or search phrase (or leave blank to exit): ")
+        if not title:
+            break
+        page = fetch_wiki_page(title)
+        if page:
+            print(f"\nTitle: {page.title}\n")
+            print(f"Summary: {page.summary[:500]}...\n")  # Print first 500 characters of summary
+            print(f"Content: {page.text[:500]}...")  # Print first 500 characters of content
+            print("\n" + "-" * 80 + "\n")
 
-CALL main()
-"""
+if __name__ == '__main__':
+    main()
