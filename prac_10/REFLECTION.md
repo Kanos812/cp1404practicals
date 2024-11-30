@@ -26,7 +26,7 @@ making it easier to allocate adequate time and resources to different parts of a
 ## Code Reviews
 
 ### What have you learned from being reviewed by other people?
-I learned that a recurring issue was that I would stray off topic from the taught content and make presumptions, 
+I learned that a recurring issue was that I would stray off-topic from the taught content and make presumptions, 
 which often led to inconsistent and inefficient code. Receiving feedback from others highlighted areas where I could 
 improve my code's readability, efficiency, and adherence to best practices. It also made me more aware of the importance of 
 writing clear and maintainable code, particularly in the context of collaboration and feedback loops. 
@@ -60,7 +60,7 @@ positive affirmations on producing good quality good.
 Although this code was completed to a high degree, I was able to provide constructive feedback through highlighting 
 examples of inconsistencies in code (for instance in variable naming). I believe that I was able to provide constructive 
 criticism that allowed the user to further enhance their coding habits for future by summarising my suggestions in a comment 
-at the end. Furthermore I made sure to praise the user for the high quality code that they were able to produce. 
+at the end. Furthermore, I made sure to praise the user for the high quality code that they were able to produce. 
 
 ## Practicals
 
