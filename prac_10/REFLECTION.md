@@ -1,7 +1,5 @@
 # CP1404 Practical Reflection - Harrison O'Kane 
 
-Write short but thoughtful answers to each of the following.  
-Replace each `...` with your meaningful answer.
 
 ## Estimates
 
@@ -45,19 +43,24 @@ For each one, write a short explanation of what was good about your review.
 
 ### Good Code Review 1
 
-[]()
+[Prac 06 Feedback Request - scott-gills-dyer](https://github.com/scott-gills-dyer/cp1404practicals/pull/1)
 
 ### Explanation
 
-...
+I put time to go through each file and provide not only feedback on the provided files, but also examples to help the user 
+understand my thoughts. Although I provided a lot of constructive criticism, I also made the effort to balance this out with 
+positive affirmations on producing good quality good.
 
 ### Good Code Review 2
 
-[]()
+[Prac 08 Feedback Request - nicknlowe](https://github.com/nicknlowe/cp1404practicals/pull/6)
 
 ### Explanation
 
-...
+Although this code was completed to a high degree, I was able to provide constructive feedback through highlighting 
+examples of inconsistencies in code (for instance in variable naming). I believe that I was able to provide constructive 
+criticism that allowed the user to further enhance their coding habits for future by summarising my suggestions in a comment 
+at the end. Furthermore I made sure to praise the user for the high quality code that they were able to produce. 
 
 ## Practicals
 
@@ -68,3 +71,7 @@ practical application, and make practicals more engaging. Additionally, I would 
 to encourage teamwork and peer learning. That being said I really enjoyed the practicals given to us this year. 
 
 ### What did you do really well for practicals in this subject?
+Although I was inconsistent in applying knowledge learned in class, I was successful in completing every practical
+(apart from the project management system in week 7) to a degree that fulfilled the criteria and worked with little debugging 
+required. I believe I was successful in being able to map my completion from initial planning to the final solution, albeit 
+I can improve my efficiency of the process by being more mindful of good coding practices. 
